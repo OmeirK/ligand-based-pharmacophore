@@ -71,6 +71,7 @@ def align_receptors(dl_data, ref_pdb, split_dir, out_dir):
     
     cmd.reinitialize()
     cmd.load(f'{split_dir}/{ref_pdb}.{ref_pdb_ch}.pdb', 'ref')
+    cmd.save(f'{out_dir}/reference_receptor.pdb', f'ref')
     
     print(f'Aligning all receptors to {split_dir}/{ref_pdb}.{ref_pdb_ch}.pdb')
     # All pdbs are should be loaded in order of their score
