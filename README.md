@@ -14,7 +14,16 @@ conda env create --file ligand_pharmacophore.yml
 ```
 
 ## Running the code
-A wrapper script can be used to run the entire pipeline. To produce the example output, run:
+A wrapper script can be used to run the entire pipeline. 
+The wrapper script takes the following inputs:
+1) ```--protein_sequence``` Required input, the protein sequence
+2) ```--outdir``` Required input, a path to the output directory
+3) ```--seqid_cutoff``` Opional. The minimum sequence identify for a template structure. Value is between 0 and 1. (default = 0.9)
+4) ```--max_templates``` Optional. The maximum number of target to download. This can be set to avoid storage downloading large datasets. (default = 100)
+5) ```--cluster_radius``` Optional. The radius to use for clustering ligand atoms into pharmacophore regions, in Angstroms. (Default = 1.0)
+6) ```---min_cluster_size``` Optional. The minimum number of atoms within a cluster of pharmacophore atoms (default = 3)
+
+To produce the example output, run:
 ```
 python3 Py_template_searching_wrapper.py -p MLLLPLPLLLFLLCSRAEAGEIIGGTESKPHSRPYMAYLEIVTSNGPSKFCGGFLIRRNFVLTAAHCAGRSITVTLGAHNITEEEDTWQKLEVIKQFRHPKYNTSTLHHDIMLLKLKEKASLTLAVGTLPFPSQKNFVPPGRMCRVAGWGRTGVLKPGSDTLQEVKLRLMDPQACSHFRDFDHNLQLCVGNPRKTKSAFKGDSGGPLLCAGVAQGIVSYGRSDAKPPAVFTRISHYRPWINQILQAN -o=chymase_example -c=0.9 -max_tmp=20
 ```
