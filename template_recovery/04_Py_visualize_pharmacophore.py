@@ -10,7 +10,7 @@ from pymol import cmd
 parser = argparse.ArgumentParser()
 parser.add_argument('--ref_receptor', '-r', help='A .pdb file of a reference receptor which will be used for the visualization')
 parser.add_argument('--pharm_dir', '-pd', help='Path to the pharmacophore_extraction/ directory with clustered pharmacophore atoms')
-parser.add_argument('--out_pse', '-o', help='Name of the output .pse file (default = visual.pse)', default='visual.pse')
+parser.add_argument('--out_dir', '-od', help='Name of the directory where output files will be stored (default = ./)', default='./')
 
 args = parser.parse_args()
 
@@ -129,6 +129,9 @@ def main():
         # Load files in order
         for xyz_f, rank in xyz_inf:
             cmd.load(f'{cd}/{xyz_f}')
+    
+    # Save a PDB with the results
+    cmd.multisave(f'{args.out_dir}/template_pharmacophore.pdb')
 
     # Set visualization settings
     cmd.disable('*') # Speeds the code up (anecdotally)
@@ -199,7 +202,8 @@ def main():
     cmd.scene('Pharm_All', 'store')
     
     cmd.scene('Pharm_Top3')
-    cmd.save(args.out_pse)
+    # Save the PSE
+    cmd.save(f'{args.out_dir}/template_pharmacophore_visual.pse')
 
 if __name__=='__main__':
     main()

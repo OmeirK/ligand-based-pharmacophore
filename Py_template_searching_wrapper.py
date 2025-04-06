@@ -42,7 +42,7 @@ def main():
 
     subprocess.run(cmd3.split())
 
-    cmd4 = f'python3 {BIN}/04_Py_visualize_pharmacophore.py -r={args.outdir}/template_structures/aligned_receptors/reference_receptor.pdb -pd={args.outdir}/pharmacophore_extraction/ -o={args.outdir}/pharmacophore_visual.pse'
+    cmd4 = f'python3 {BIN}/04_Py_visualize_pharmacophore.py -r={args.outdir}/template_structures/aligned_receptors/reference_receptor.pdb -pd={args.outdir}/pharmacophore_extraction/ -od={args.outdir}/'
 
     subprocess.run(cmd4.split())
 
