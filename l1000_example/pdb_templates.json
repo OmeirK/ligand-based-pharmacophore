@@ -1,0 +1,183 @@
+{
+    "query_id": "1d30bdbf-5a23-4c3c-8210-634a5ce872b6",
+    "result_type": "polymer_instance",
+    "total_count": 44,
+    "result_set": [
+        {
+            "identifier": "5YJM.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "5YJP.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H60.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H61.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H62.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H63.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H64.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H65.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H66.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H67.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H68.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H69.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6A.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6C.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6D.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6E.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6F.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "7H6I.A",
+            "score": 1.0
+        },
+        {
+            "identifier": "1NN6.A",
+            "score": 0.9375
+        },
+        {
+            "identifier": "1KLT.A",
+            "score": 0.8125
+        },
+        {
+            "identifier": "7H6B.A",
+            "score": 0.8125
+        },
+        {
+            "identifier": "1PJP.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "1T31.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "2HVX.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "3S0N.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AFQ.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AFQ.B",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AFS.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AFZ.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AFZ.B",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AG1.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AG2.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4AG2.B",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4K2Y.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4K5Z.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4K60.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4K69.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "4KP0.A",
+            "score": 0.6875
+        },
+        {
+            "identifier": "9GBH.A",
+            "score": 0.625
+        },
+        {
+            "identifier": "9GC1.A",
+            "score": 0.625
+        },
+        {
+            "identifier": "9GC9.A",
+            "score": 0.625
+        },
+        {
+            "identifier": "9GCC.A",
+            "score": 0.625
+        },
+        {
+            "identifier": "9GCD.A",
+            "score": 0.625
+        },
+        {
+            "identifier": "3N7O.A",
+            "score": 0.5
+        }
+    ]
+}

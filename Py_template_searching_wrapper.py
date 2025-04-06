@@ -14,9 +14,10 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--protein_sequence' , '-p', help='The sequence of the protein you want to dock a ligand to')
 parser.add_argument('--outdir', '-o', help='Directory where search results will be stored')
-
-parser.add_argument('--seqid_cutoff', '-c', help='The sequence identity cutoff to use in the search. Value must be between 0.0 and 1.0 (default = 0.0)', default=0.9, type=float)
+parser.add_argument('--seqid_cutoff', '-c', help='The sequence identity cutoff to use in the search. Value must be between 0.0 and 1.0 (default = 0.9)', default=0.9, type=float)
 parser.add_argument('--max_templates', '-max_tmp', help='The maximum number of templates to download. This value is in place to prevent large sets of template structures from being downloaded. The top --max_templates PDB files with the best alignment scores will be downloaded. Input -1 to download all recovered templates from the PDB (default = 100)', default=100, type=int)
+parser.add_argument('--cluster_radius', '-r', help='The radius to use for clustering pharmacophore atoms in template ligands, in Angstroms (default = 1.0)', default=1.0, type=float)
+parser.add_argument('--min_cluster_size', '-mc', help='The minimum number of atoms within a cluster of pharmacophore atoms (default = 3)', default=3, type=int)
 
 args = parser.parse_args()
 
@@ -36,6 +37,14 @@ def main():
         cmd2 = f'python3 {BIN}/02_Py_download_template_structures.py -i {args.outdir}/pdb_templates.json -o {args.outdir}/template_structures -m {args.max_templates}'
 
     subprocess.run(cmd2.split())
+
+    cmd3 = f'python3 {BIN}/03_Py_cluster_template_ligand_atoms.py -ld={args.outdir}/template_structures/aligned_ligands/ -od={args.outdir}/pharmacophore_extraction/ --min_size {args.min_cluster_size} --cluster_radius {args.cluster_radius}'
+
+    subprocess.run(cmd3.split())
+
+    cmd4 = f'python3 {BIN}/04_Py_visualize_pharmacophore.py -r={args.outdir}/template_structures/aligned_receptors/reference_receptor.pdb -pd={args.outdir}/pharmacophore_extraction/ -o={args.outdir}/pharmacophore_visual.pse'
+
+    subprocess.run(cmd4.split())
 
 if __name__=='__main__':
     main()
