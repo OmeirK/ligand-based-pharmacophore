@@ -25,7 +25,7 @@ The wrapper script takes the following inputs:
 
 To produce the example output, run:
 ```
-python3 Py_template_searching_wrapper.py -p MLLLPLPLLLFLLCSRAEAGEIIGGTESKPHSRPYMAYLEIVTSNGPSKFCGGFLIRRNFVLTAAHCAGRSITVTLGAHNITEEEDTWQKLEVIKQFRHPKYNTSTLHHDIMLLKLKEKASLTLAVGTLPFPSQKNFVPPGRMCRVAGWGRTGVLKPGSDTLQEVKLRLMDPQACSHFRDFDHNLQLCVGNPRKTKSAFKGDSGGPLLCAGVAQGIVSYGRSDAKPPAVFTRISHYRPWINQILQAN -o=chymase_example -c=0.9 -max_tmp=20
+python3 Py_template_searching_wrapper.py -p MLLLPLPLLLFLLCSRAEAGEIIGGTESKPHSRPYMAYLEIVTSNGPSKFCGGFLIRRNFVLTAAHCAGRSITVTLGAHNITEEEDTWQKLEVIKQFRHPKYNTSTLHHDIMLLKLKEKASLTLAVGTLPFPSQKNFVPPGRMCRVAGWGRTGVLKPGSDTLQEVKLRLMDPQACSHFRDFDHNLQLCVGNPRKTKSAFKGDSGGPLLCAGVAQGIVSYGRSDAKPPAVFTRISHYRPWINQILQAN -o=chymase_example -c=0.9 -max_tmp=50
 ```
 
 ## Interpreting the output
@@ -41,3 +41,8 @@ Pharmacophore clusters are ranked on the basis of their size, with larger cluste
 Within the visualization, acceptor atoms are shown in red, donor in blue, apolar in yellow, aromatic in organge, and halogen in green. If a cluster contains more atoms, it is represented as a more opaque surface.
 
 Recovered template structures can be viewed in the ```output/template_structures``` directory. All template structures are aligned to a reference protein with the highest sequence identity to the provided sequence
+
+## Advanced usage
+If you wish to extract a pharmacophore from ligands with a known binding affinity, the ```util01_Py_get_affinity_ligs.py``` and ```util02_Py_compile_affinity_ligs.py``` scripts can be used.
+
+To extract this pharmacophore from the wrapper script, use the ```--affinity_ligs_only``` flag. An additional folder will be created in the ```output/affinity_ligs_pharmacophore_extraction``` folder

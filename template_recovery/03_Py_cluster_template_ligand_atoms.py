@@ -204,6 +204,9 @@ def main():
 
     lig_mols = []
     for mol_f in os.listdir(args.ligand_dir):
+        if mol_f[-4:] != '.mol':
+            continue
+
         mol = Chem.MolFromMolFile(f'{args.ligand_dir}/{mol_f}')
         if mol is not None:
             lig_mols.append(mol)

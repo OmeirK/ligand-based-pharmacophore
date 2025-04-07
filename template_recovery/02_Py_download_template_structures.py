@@ -43,7 +43,7 @@ def compile_download_data(template_data, cutoff):
 
 # Download cif files
 def download_cif_files(dl_data, outdir, split_outdir):
-    print('Downloading tempaltes from RCSB...')
+    print('Downloading templates from RCSB...')
     for pdb in dl_data:
         pdb_coords = requests.get(f'https://files.rcsb.org/download/{pdb}.cif')
         
