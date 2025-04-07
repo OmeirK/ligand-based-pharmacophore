@@ -32,7 +32,8 @@ def main():
     if args.max_templates == -1:
         with open(f'{args.outdir}/pdb_templates.json') as fo:
             template_data = json.load(fo)
-            n_templates = len(template_data)
+            n_templates = len(template_data['result_set'])
+            print(f'\tDownloading all {n_templates} tempalte ligands...')
             cmd2 = f'python3 {BIN}/02_Py_download_template_structures.py -i {args.outdir}/pdb_templates.json -o {args.outdir}/template_structures -m {n_templates}'
     else:
         cmd2 = f'python3 {BIN}/02_Py_download_template_structures.py -i {args.outdir}/pdb_templates.json -o {args.outdir}/template_structures -m {args.max_templates}'
