@@ -37,6 +37,7 @@ def main():
                 aff_type = aff_data[caseid][ligid]['type']
 
                 mol = Chem.MolFromMolFile(f'{args.ligand_dir}/{lig_mol}')
+                mol.SetProp('_Name', lig_mol)
                 mol.SetProp('affinity', str(aff))
                 mol.SetProp('affinity_unit', aff_unit)
                 mol.SetProp('affinity_type', aff_type)
