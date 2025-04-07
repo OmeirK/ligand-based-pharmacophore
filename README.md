@@ -46,4 +46,4 @@ Recovered template structures can be viewed in the ```output/template_structures
 ## Advanced usage
 If you wish to extract a pharmacophore from ligands with a known binding affinity, the ```util01_Py_get_affinity_ligs.py``` and ```util02_Py_compile_affinity_ligs.py``` scripts can be used.
 
-To extract this pharmacophore from the wrapper script, use the ```--affinity_ligs_only``` flag. An additional folder will be created in the ```output/affinity_ligs_pharmacophore_extraction``` folder
+To extract this pharmacophore from the wrapper script, use the ```--affinity_ligs_only``` flag. Additional outputs will be created and stored in the ```output/affinity_ligs_pharmacophore_extraction``` folder
