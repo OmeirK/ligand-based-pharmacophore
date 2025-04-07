@@ -1,6 +1,6 @@
 ## Introduction
 
-This script will extract template structures depositied in the PDB and generate a visualization of pharmacophore regions where protein-ligand interactions frequently occur. 
+For a given sequence, this script will extract holo template structures depositied in the PDB and generate a visualization of pharmacophore regions where protein-ligand interactions frequently occur. 
 
 The user provides a protein sequence as the input, and can specify a sequence identity cutoff that is used to recover homolgous structures. By default, 100 structures with the best sequence identity are downloaded.
 
@@ -22,6 +22,7 @@ The wrapper script takes the following inputs:
 4) ```--max_templates``` Optional. The maximum number of target to download. This can be set to avoid storage downloading large datasets. (default = 100)
 5) ```--cluster_radius``` Optional. The radius to use for clustering ligand atoms into pharmacophore regions, in Angstroms. (Default = 1.0)
 6) ```---min_cluster_size``` Optional. The minimum number of atoms within a cluster of pharmacophore atoms (default = 3)
+7) ```--affinity_ligs_only``` Optional. Create an additional pharmacophore from template ligands with experimental binding affinities. 
 
 To produce the example output, run:
 ```
@@ -31,7 +32,7 @@ python3 Py_template_searching_wrapper.py -p MLLLPLPLLLFLLCSRAEAGEIIGGTESKPHSRPYM
 ## Interpreting the output
 Within the output directory, pharmacophores can be visualized in pymol using the command:
 ```
-pymol template_pharmacophore_visual.pse
+pymol output/template_pharmacophore_visual.pse
 ```
 
 The PDB file ```template_pharmacophore.pdb``` can be used to access coordinates of pharmacophore points in a single file. Coordinates for each pharmacophore cluster are written under different headers.
