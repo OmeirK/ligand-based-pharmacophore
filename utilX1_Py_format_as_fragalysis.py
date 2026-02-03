@@ -304,18 +304,23 @@ def copy_files(copy_rec, copy_mols, pdbid, enan_idx, outdir, exclude_mols=[], al
             continue
 
         molf_name = os.path.basename(molf)
-        if molf in alt_mols:
+        if molf in alt_mols[1:]:
             print(f'ALTMOL!')
-            #newname = f'{dirname}-{molf_name.strip(pdbid)[:-4]}-alt{alt_idx}_ligand.mol'
-            newname = f'{dirname}-{molf_name[len(pdbid)+1:]}-alt{alt_idx}_ligand.mol'
+            parent_molf = alt_mols[0]
+            parent_molf_name = os.path.basename(parent_molf)
+            #newname = f'{dirname}-{molf_name[len(pdbid)+1:]}-alt{alt_idx}_ligand.sdf'
+            newname = f'{dirname}-{parent_molf_name[len(pdbid)+1:]}-alt{alt_idx}_ligand.sdf'
             alt_idx += 1
         else:
-            #newname = f'{dirname}-{molf_name.strip(pdbid)[:-4]}_ligand.mol'
-            newname = f'{dirname}-{molf_name[len(pdbid)+1:]}_ligand.mol'
+            newname = f'{dirname}-{molf_name[len(pdbid)+1:]}_ligand.sdf'
+        m.SetProp('_Name', molf_name)
 
-        shutil.copy(molf, f'{outpath}/{newname}')
         print(f'\t{molf_name} ->', newname)
-    pass
+        #shutil.copy(molf, f'{outpath}/{newname}')
+        #print(Chem.MolToMolBlock(m))
+        #Chem.MolToMolFile(m, f'{outpath}/{newname}')
+        with Chem.SDWriter(f'{outpath}/{newname}') as w:
+            w.write(m)
 
 def main():
     os.makedirs(args.outdir, exist_ok=True)
@@ -349,7 +354,7 @@ def main():
                 if alt_molf in exclude_alt_confs:
                     continue
 
-                alt_confs = alt_data[alt_molf]
+                alt_confs = [alt_molf] + alt_data[alt_molf]
 
                 copy_files(pdb_f, valid_mols, f'{pdbid}', 0, args.outdir, exclude_mols=[], alt_mols=alt_confs)
                 exclude_alt_confs += alt_confs
