@@ -96,6 +96,7 @@ def extract_ligands(dl_data, aln_dir, out_dir):
     for pdb in tqdm.tqdm(dl_data):
         for ch in dl_data[pdb]:
             cmd.reinitialize()
+            cmd.remove('elem H') #Take out hydrogens. Sometimes xtal has disconnected H atoms
             cmd.load(f'{aln_dir}/{pdb}.{ch}_aligned.pdb', f'{pdb}_{ch}')
             stored.ligands = []
             cmd.iterate(f'{pdb}_{ch} and hetatm', 'stored.ligands.append((resi,resn,segi))')
