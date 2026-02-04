@@ -236,7 +236,7 @@ def filter_ligs(lig_mol_l, case_id, threshold=4):
             smi = Chem.MolToSmiles(mol)
             #print(molf, ha_count, smi)
             mol.SetProp('smi', smi)
-            mol.SetProp('path', molf)
+            mol.SetProp('path', os.path.abspath(molf))
             
             # Check for potential enantiomers or alt conformations
             for i, hac in enumerate(hac_l):
