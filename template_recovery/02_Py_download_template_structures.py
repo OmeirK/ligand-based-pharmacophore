@@ -5,6 +5,7 @@ import shutil
 import argparse
 import requests
 import subprocess
+from rdkit import Chem
 from pymol import cmd, stored
 
 parser = argparse.ArgumentParser()
@@ -95,6 +96,7 @@ def extract_ligands(dl_data, aln_dir, out_dir):
     for pdb in tqdm.tqdm(dl_data):
         for ch in dl_data[pdb]:
             cmd.reinitialize()
+            cmd.remove('elem H') #Take out hydrogens. Sometimes xtal has disconnected H atoms
             cmd.load(f'{aln_dir}/{pdb}.{ch}_aligned.pdb', f'{pdb}_{ch}')
             stored.ligands = []
             cmd.iterate(f'{pdb}_{ch} and hetatm', 'stored.ligands.append((resi,resn,segi))')
@@ -104,8 +106,15 @@ def extract_ligands(dl_data, aln_dir, out_dir):
                 #print(f'Convert {pdb}.{ch}.{resn}.{resi}.{segi}.mol')
                 cmd.save(f'tmp.mol', f'{pdb}_{ch} and resi {resi} and resn {resn} and segi {segi}')
 
-                obabel_cmd = f'obabel -imol tmp.mol -omol -O{out_dir}/{pdb}.{ch}.{resi}.{resn}.{segi}.mol'
-                subprocess.run(obabel_cmd.split(), stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+                # Check of the ligand is rdkit readable
+                # If it is, save the existing protonation state
+                mol = Chem.MolFromMolFile('tmp.mol')
+                if mol is None:
+                    print(f'Use obabel to protonate {out_dir}/{pdb}.{ch}.{resi}.{resn}.{segi}.mol')
+                    obabel_cmd = f'obabel -imol tmp.mol -omol -O{out_dir}/{pdb}.{ch}.{resi}.{resn}.{segi}.mol'
+                    subprocess.run(obabel_cmd.split(), stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+                else:
+                    Chem.MolToMolFile(mol, f'{out_dir}/{pdb}.{ch}.{resi}.{resn}.{segi}.mol')
 
     os.remove('tmp.mol')
 
